@@ -5,12 +5,12 @@
  * @parent: The parent of the node to be created
  * @value: The value to be added
  *
- * RETURN 0
+ * Return: 0
  */
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
 {
 	binary_tree_t *parse;
-      
+
 	parse = malloc(sizeof(binary_tree_t));
 	if (parse == NULL)
 		return (NULL);

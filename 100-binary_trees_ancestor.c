@@ -1,14 +1,15 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_ancestor - Searches for the lowest common ancestor
+ * binary_trees_ancestor - Searches for the lowest common ancestor
  *
  * @first: The first node
  * @second: The second node
  *
  * Return: Popinter to the lowest common ancestor
  */
-binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second)
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first
+		, const binary_tree_t *second)
 {
 	binary_tree_t *parser1, *parser2;
 

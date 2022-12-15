@@ -11,7 +11,7 @@
  */
 int check_height(binary_tree_t *tree, int *max, int *i)
 {
-        int c = 0;
+	int c = 0;
 
 	if (tree == NULL)
 	{
@@ -42,9 +42,8 @@ int check_height(binary_tree_t *tree, int *max, int *i)
  * leaf_counter - Count the number of nodes with at least one child
  *
  * @tree: The root of a tree
- * @count: Counting variable
  *
- * Return: Count
+ * Return: count
  */
 int leaf_counter(binary_tree_t *tree)
 {
@@ -54,7 +53,8 @@ int leaf_counter(binary_tree_t *tree)
 	{
 		return (1);
 	}
-	if ((tree->left == NULL && tree->right != NULL) || (tree->right == NULL && tree->left != NULL))
+	if ((tree->left == NULL && tree->right != NULL)
+			|| (tree->right == NULL && tree->left != NULL))
 		return (0);
 	c = leaf_counter(tree->left);
 	if (c == 0)
@@ -65,7 +65,7 @@ int leaf_counter(binary_tree_t *tree)
 	return (c);
 }
 /**
- * binary_tree_is_perfect - Calculates the number of nodes with at least one child
+ * binary_tree_is_perfect - Counts the number of nodes with at least one child
  *
  * @tree: The root of a tree
  *
@@ -77,7 +77,8 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 
 	if (tree == NULL)
 		return (1);
-	if ((tree->left == NULL && tree->right != NULL) || (tree->right == NULL && tree->left != NULL))
+	if ((tree->left == NULL && tree->right != NULL)
+			|| (tree->right == NULL && tree->left != NULL))
 		return (0);
 	c = leaf_counter(tree->left);
 	if (c == 0)

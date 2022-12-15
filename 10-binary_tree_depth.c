@@ -15,13 +15,10 @@ size_t binary_tree_depth(const binary_tree_t *tree)
 	parser = (binary_tree_t *)tree;
 	if (tree == NULL)
 		return (0);
-	else
+	while (parser->parent)
 	{
-		while (parser->parent)
-		{
-			parser = parser->parent;
-			depth++;
-		}
-		return (depth);
+		parser = parser->parent;
+		depth++;
 	}
+	return (depth);
 }

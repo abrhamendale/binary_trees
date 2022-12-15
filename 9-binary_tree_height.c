@@ -7,7 +7,7 @@
  * @max: The maximum height
  * @i: Iteration variable
  *
- * Return:
+ * Return: 0 or 1
  */
 int tree_height(const binary_tree_t *tree, int *max, int i)
 {
@@ -33,10 +33,7 @@ size_t binary_tree_height(const binary_tree_t *tree)
 
 	if (tree == NULL)
 		return (0);
-	else
-	{
-		max = tree_height(tree->left, &max, i);
-		max = tree_height(tree->right, &max, i);
-	}
+	max = tree_height(tree->left, &max, i);
+	max = tree_height(tree->right, &max, i);
 	return (max);
 }

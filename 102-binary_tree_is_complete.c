@@ -7,7 +7,7 @@
  * @max: The maximum height
  * @i: Iteration variable
  *
- * Return:
+ * Return: Height
  */
 int tree_height(const binary_tree_t *tree, int *max, int i)
 {
@@ -33,11 +33,8 @@ size_t binary_tree_height(const binary_tree_t *tree)
 
 	if (tree == NULL)
 		return (0);
-	else
-	{
-		max = tree_height(tree->left, &max, i);
-		max = tree_height(tree->right, &max, i);
-	}
+	max = tree_height(tree->left, &max, i);
+	max = tree_height(tree->right, &max, i);
 	return (max);
 }
 /**
@@ -50,20 +47,22 @@ size_t binary_tree_height(const binary_tree_t *tree)
  */
 int power(int a, int b)
 {
-	int power = 1, i;  
-	
+	int power = 1, i;
+
 	for (i = 1 ; i <= b ; ++i)
-	{  
+	{
 		power = power * a;
-	}  
-	return (power);  
+	}
+	return (power);
 }
 /**
  * check_height - checks if height levels are equal
  *
  * @tree: Pointer to the node of a tree
- * @max: Pointer to the max value
+ * @count: Count
+ * @level: Tree level
  * @i: Pointer to an iterator value
+ * @c: Pointer to a count variable
  *
  * Return: 0 or 1
  */
@@ -78,7 +77,6 @@ int check_height(binary_tree_t *tree, int *count, int *level, int *i, int *c)
 	(*i)++;
 	if (*i == *level)
 	{
-		//printf("Count:%dLevel:%di:%dc:%dn:%d\n", *count, *level, *i, *c, tree->n);
 		if (*c == 1)
 			*c = 2;
 		(*count)++;
@@ -95,7 +93,7 @@ int check_height(binary_tree_t *tree, int *count, int *level, int *i, int *c)
 	return (*count);
 }
 /**
- * binary_tree_is_complete - Calculates the number of nodes with at least one child
+ * binary_tree_is_complete - Counts the number of nodes with at least one child
  *
  * @tree: The root of a tree
  *
@@ -108,7 +106,6 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	if (tree == NULL)
 		return (1);
 	level = binary_tree_height(tree);
-	//printf("Height:%d\n", level);
 	for (j = 1 ; j <= level ; j++)
 	{
 		count = check_height(tree->left, &count, &j, &i, &c);
@@ -117,7 +114,6 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 		count = check_height(tree->right, &count, &j, &i, &c);
 		if (tree->right != NULL)
 			i--;
-		//printf("Count:%dc:%d\n", count, c);
 		if (count != power(2, j) && c == 2)
 			return (0);
 		count = 0;

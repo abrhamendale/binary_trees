@@ -2,9 +2,10 @@
 /**
  * tree_size - Helper function to calculate tree size
  *
+ * @tree: The tree
  * @s: Size iterator
  *
- * Returns: Size
+ * Return: Size
  */
 size_t tree_size(const binary_tree_t *tree, size_t s)
 {
@@ -29,10 +30,7 @@ size_t binary_tree_size(const binary_tree_t *tree)
 
 	if (tree == NULL)
 		return (0);
-	else
-	{
-		size = tree_size(tree->left, size);
-		size = tree_size(tree->right, size);
-	}
+	size = tree_size(tree->left, size);
+	size = tree_size(tree->right, size);
 	return (size);
 }

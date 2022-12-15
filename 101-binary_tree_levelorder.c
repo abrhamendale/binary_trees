@@ -7,7 +7,7 @@
  * @max: The maximum height
  * @i: Iteration variable
  *
- * Return:
+ * Return: Height
  */
 int tree_height(const binary_tree_t *tree, int *max, int i)
 {
@@ -33,11 +33,8 @@ size_t binary_tree_height(const binary_tree_t *tree)
 
 	if (tree == NULL)
 		return (0);
-	else
-	{
-		max = tree_height(tree->left, &max, i);
-		max = tree_height(tree->right, &max, i);
-	}
+	max = tree_height(tree->left, &max, i);
+	max = tree_height(tree->right, &max, i);
 	return (max);
 }
 
@@ -45,14 +42,15 @@ size_t binary_tree_height(const binary_tree_t *tree)
  * check_height - checks if height levels are equal
  *
  * @tree: Pointer to the node of a tree
- * @max: Pointer to the max value
+ * @func: Pointer to a function
+ * @level: Tree level
  * @i: Pointer to an iterator value
  *
  * Return: 0 or 1
  */
 int check_height(binary_tree_t *tree, void (*func)(int), int *level, int *i)
 {
-        int c = 0;
+	int c = 0;
 
 	if (tree == NULL)
 		return (0);
@@ -70,9 +68,10 @@ int check_height(binary_tree_t *tree, void (*func)(int), int *level, int *i)
 	return (c);
 }
 /**
- * binary_tree_levelorder - Calculates the number of nodes with at least one child
+ * binary_tree_levelorder - Counts the number of nodes with at least one child
  *
  * @tree: The root of a tree
+ * @func: Pointer to a function
  *
  * Return: The number of nodes with at least one child
  */

@@ -42,6 +42,6 @@ size_t binary_tree_leaves(const binary_tree_t *tree)
 	{
 		count = leaf_counter(tree->left, count);
 		count = leaf_counter(tree->right, count);
-	}		
+	}
 	return (count);
 }

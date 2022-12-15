@@ -2,9 +2,9 @@
 /**
  * tree_check - Helper function to calculate tree size
  *
- * @s: Size iterator
+ * @tree: root of a tree
  *
- * Returns: Size
+ * Return: Size
  */
 int tree_check(const binary_tree_t *tree)
 {
@@ -12,7 +12,8 @@ int tree_check(const binary_tree_t *tree)
 
 	if (tree == NULL)
 		return (1);
-	if ((tree->left != NULL && tree->right == NULL) || (tree->right != NULL && tree->left == NULL))
+	if ((tree->left != NULL && tree->right == NULL)
+			|| (tree->right != NULL && tree->left == NULL))
 		return (0);
 	c = tree_check(tree->left);
 	c = tree_check(tree->right);
@@ -22,7 +23,7 @@ int tree_check(const binary_tree_t *tree)
 /**
  * binary_tree_is_full - calculates the size of a binary tree
  *
- * @tree: The tree
+ * @tree: Root of a tree
  *
  * Return: 1 or 0
  */
@@ -32,12 +33,10 @@ int binary_tree_is_full(const binary_tree_t *tree)
 
 	if (tree == NULL)
 		return (1);
-	if ((tree->left != NULL && tree->right == NULL) || (tree->right != NULL && tree->left == NULL))
+	if ((tree->left != NULL && tree->right == NULL)
+			|| (tree->right != NULL && tree->left == NULL))
 		return (0);
-	else
-	{
-		c = tree_check(tree->left);
-		c = tree_check(tree->right);
-	}
+	c = tree_check(tree->left);
+	c = tree_check(tree->right);
 	return (c);
 }
