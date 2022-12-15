@@ -111,7 +111,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	//printf("Height:%d\n", level);
 	for (j = 1 ; j <= level ; j++)
 	{
-		//count = check_height(tree->left, &count, &j, &i, &c);
+		count = check_height(tree->left, &count, &j, &i, &c);
 		if (tree->left != NULL)
 			i--;
 		count = check_height(tree->right, &count, &j, &i, &c);
