@@ -13,34 +13,10 @@ binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree)
 	parser = tree->left;
 	tree->parent = parser;
 	tree->left = parser->right;
+	if (parser->right)
+		parser->right->parent = tree;
 	parser->parent = NULL;
+	parser->right = tree;
 	tree = parser;
-	/*
-	if (parent == NULL)
-	{
-		parse->n = value;
-		parse->left = NULL;
-		parse->right = NULL;
-		parse->parent = NULL;
-		parent = parse;
-		return (parse);
-	}
-	if (parent->n > value)
-	{
-		parent->left = parse;
-		parse->n = value;
-		parse->left = NULL;
-		parse->right = NULL;
-		parse->parent = parent;
-	}
-	else
-	{
-		parent->right = parse;
-		parse->n = value;
-		parse->left = NULL;
-		parse->right = NULL;
-		parse->parent = parent;
-	}
-	*/
 	return (parser);
 }
