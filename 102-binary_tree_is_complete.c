@@ -78,7 +78,7 @@ int check_height(binary_tree_t *tree, int *count, int *level, int *i, int *c)
 	(*i)++;
 	if (*i == *level)
 	{
-		printf("Count:%dLevel:%di:%dc:%dn:%d\n", *count, *level, *i, *c, tree->n);
+		//printf("Count:%dLevel:%di:%dc:%dn:%d\n", *count, *level, *i, *c, tree->n);
 		if (*c == 1)
 			*c = 2;
 		(*count)++;
@@ -108,16 +108,16 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	if (tree == NULL)
 		return (1);
 	level = binary_tree_height(tree);
-	printf("Height:%d\n", level);
+	//printf("Height:%d\n", level);
 	for (j = 1 ; j <= level ; j++)
 	{
-		count = check_height(tree->left, &count, &j, &i, &c);
+		//count = check_height(tree->left, &count, &j, &i, &c);
 		if (tree->left != NULL)
 			i--;
 		count = check_height(tree->right, &count, &j, &i, &c);
 		if (tree->right != NULL)
 			i--;
-		printf("Count:%dc:%d\n", count, c);
+		//printf("Count:%dc:%d\n", count, c);
 		if (count != power(2, j) && c == 2)
 			return (0);
 		count = 0;
